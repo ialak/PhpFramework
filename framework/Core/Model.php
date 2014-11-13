@@ -1,20 +1,9 @@
 <?php
-/////////////////////////////////////////////////////////////////////////////
-//
-// SpeedPHP - 快速的中文PHP应用框架
-//
-// Copyright (c) 2008 - 2009 SpeedPHP.com All rights reserved.
-//
-// 许可协议请查看 http://www.speedphp.com/
-//
-// 作者：jake（jake@speedphp.com）
-//
-/////////////////////////////////////////////////////////////////////////////
 
 /**
- * spModel 系统模型类，所有模型类的父类 应用程序中的每个模型类都应继承于spModel。
+ * Model 系统模型类，所有模型类的父类 应用程序中的每个模型类都应继承于spModel。
  */
-class spModel {
+class Model {
 	
 	/**
 	 * 表主键
@@ -40,8 +29,8 @@ class spModel {
 	 */
 	public function __construct($params = null)
 	{
-		$this->tbl_name = $GLOBALS['G_SP']['db']['prefix'] . $this->table;
-		$this->_db = spClass($GLOBALS['G_SP']['db']['driver'], $GLOBALS['G_SP']['db'], $GLOBALS['G_SP']['sp_core_path'].$GLOBALS['G_SP']['db_driver_path']);
+		$this->tbl_name = $GLOBALS['Global']['db']['prefix'] . $this->table;
+		$this->_db = spClass($GLOBALS['Global']['db']['driver'], $GLOBALS['Global']['db'], $GLOBALS['Global']['sp_core_path'].$GLOBALS['Global']['db_driver_path']);
 	}
 
 	/**

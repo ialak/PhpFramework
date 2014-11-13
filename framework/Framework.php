@@ -10,7 +10,7 @@ $GLOBALS['time_start'] = microtime(TRUE);
 
 // 定义系统路径
 if(!defined('FM_PATH')) define('FM_PATH', dirname(__FILE__));
-if(!defined('APP_PATH')) define('APP_PATH', dirname(FM_PATH).'/app');
+if(!defined('APP_PATH')) define('APP_PATH', dirname(FM_PATH).'Home');
 
 // 载入配置文件
 if(isset($Config)){
@@ -20,6 +20,7 @@ if(isset($Config)){
 }
 
 // 载入核心MVC架构文件
+import(FM_PATH."/Function.php");
 import($GLOBALS['Global']['core_path']."/Core.php");
 import($GLOBALS['Global']['core_path']."/Actoin.php");
 import($GLOBALS['Global']['core_path']."/Model.php");

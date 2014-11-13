@@ -1,3 +1,3 @@
 <?php
 define("APP_PATH",dirname(__FILE__));
-define("SP_PATH",dirname(__FILE__).'/SpeedPHP');
+define("FM_PATH",dirname(__FILE__).'/FrameWork');
