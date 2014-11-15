@@ -1,20 +1,20 @@
 <?php
 //----------------------------------
-//¹«¹²Èë¿ÚÎÄ¼þ
+//å…¬å…±å…¥å£æ–‡ä»¶
 //----------------------------------
 
-// ¼ÇÂ¼¿ªÊ¼ÔËÐÐÊ±¼ä
+// è®°å½•å¼€å§‹è¿è¡Œæ—¶é—´
 
 $GLOBALS['time_start'] = microtime(TRUE);
 
-//¿ªÆôSESSION
+//å¼€å¯SESSION
 session_start();
 
-// ¶¨ÒåÏµÍ³Â·¾¶
+// å®šä¹‰ç³»ç»Ÿè·¯å¾„
 if(!defined('FM_PATH')) define('FM_PATH', dirname(__FILE__));
 if(!defined('APP_PATH')) define('APP_PATH', dirname(FM_PATH).'/Home');
 
-// ÔØÈëÅäÖÃÎÄ¼þ
+// è½½å…¥é…ç½®æ–‡ä»¶
 if(isset($Config)){
 	$GLOBALS['Global'] = array_merge(require(FM_PATH."/Config.php"),$Config);
 }else{
@@ -22,9 +22,9 @@ if(isset($Config)){
 }
 
 /**
- * import  ÔØÈë°üº¬ÎÄ¼þ
+ * import  è½½å…¥åŒ…å«æ–‡ä»¶
  * 
- * @param file    ÐèÒªÔØÈëµÄÎÄ¼þÂ·¾¶
+ * @param file    éœ€è¦è½½å…¥çš„æ–‡ä»¶è·¯å¾„
  */
 function import($file)
 {
@@ -39,24 +39,24 @@ function import($file)
 }
 
 /**
- * Class  ÀàÊµÀý»¯³ÌÐò  Ìá¹©×Ô¶¯ÔØÈëÀà¶¨ÒåÎÄ¼þ£¬ÊµÀý»¯²¢·µ»Ø¶ÔÏó¾ä±úµÄ¹¦ÄÜ
+ * Class  ç±»å®žä¾‹åŒ–ç¨‹åº  æä¾›è‡ªåŠ¨è½½å…¥ç±»å®šä¹‰æ–‡ä»¶ï¼Œå®žä¾‹åŒ–å¹¶è¿”å›žå¯¹è±¡å¥æŸ„çš„åŠŸèƒ½
  * 
- * @param class_name    ÀàÃû
- * @param args   Àà³õÊ¼»¯Ê±Ê¹ÓÃµÄ²ÎÊý£¬ÇëÒÔÊý×éÐÎÊ½ÊäÈë
- * @param dir    ÔØÈëÀà¶¨ÒåÎÄ¼þµÄÂ·¾¶»òÎÄ¼þ
+ * @param class_name    ç±»å
+ * @param args   ç±»åˆå§‹åŒ–æ—¶ä½¿ç”¨çš„å‚æ•°ï¼Œè¯·ä»¥æ•°ç»„å½¢å¼è¾“å…¥
+ * @param dir    è½½å…¥ç±»å®šä¹‰æ–‡ä»¶çš„è·¯å¾„æˆ–æ–‡ä»¶
  */
 function loadClass($class_name, $args = null, $dir = '')
 {
-	// ¼ì²éÊÇ·ñ¸ÃÀàÒÑ¾­ÊµÀý»¯£¬Ö±½Ó·µ»ØÒÑÊµÀý¶ÔÏó£¬±ÜÃâÔÙ´ÎÊµÀý»¯
+	// æ£€æŸ¥æ˜¯å¦è¯¥ç±»å·²ç»å®žä¾‹åŒ–ï¼Œç›´æŽ¥è¿”å›žå·²å®žä¾‹å¯¹è±¡ï¼Œé¿å…å†æ¬¡å®žä¾‹åŒ–
 	if(isset($GLOBALS['Global']["inst_class"][$class_name])){
 		return $GLOBALS['Global']["inst_class"][$class_name];
 	}
-	// Èç¹û$dir²»ÄÜ¶ÁÈ¡£¬Ôò²âÊÔÊÇ·ñ½öÂ·¾¶
+	// å¦‚æžœ$dirä¸èƒ½è¯»å–ï¼Œåˆ™æµ‹è¯•æ˜¯å¦ä»…è·¯å¾„
 	if('' != $dir && !is_file($dir))$dir = $dir.'/'.$class_name.'.php';
 	if('' != $dir && !import($dir))return FALSE;
 
 	$has_define = FALSE;
-	// Àà¶¨Òå´æÔÚ
+	// ç±»å®šä¹‰å­˜åœ¨
 	if(class_exists($class_name, false) || interface_exists($class_name, false)){
 		$has_define = TRUE;
 	}else{
@@ -68,24 +68,24 @@ function loadClass($class_name, $args = null, $dir = '')
 		$GLOBALS['Global']["inst_class"][$class_name] = new $class_name($args);
 		return $GLOBALS['Global']["inst_class"][$class_name];
 	}
-	die("²»ÄÜÑ°ÕÒµ½Àà¶¨Òå: ".$class_name);
+	die("ä¸èƒ½å¯»æ‰¾åˆ°ç±»å®šä¹‰: ".$class_name);
 }
 
-// ÔØÈëºËÐÄMVC¼Ü¹¹ÎÄ¼þ
+// è½½å…¥æ ¸å¿ƒMVCæž¶æž„æ–‡ä»¶
 import(FM_PATH."/Function.php");
 import($GLOBALS['Global']['core_path']."/Actoin.php");
 import($GLOBALS['Global']['core_path']."/Model.php");
 import($GLOBALS['Global']['core_path']."/View.php");
 
 
-// ¸ù¾ÝÅäÖÃÎÄ¼þ½øÐÐÒ»Ð©È«¾Ö±äÁ¿µÄ¶¨Òå
+// æ ¹æ®é…ç½®æ–‡ä»¶è¿›è¡Œä¸€äº›å…¨å±€å˜é‡çš„å®šä¹‰
 if('debug' == $GLOBALS['Global']['mode']){
-	define("DEBUG",TRUE); // µ±Ç°ÕýÔÚµ÷ÊÔÄ£Ê½ÏÂ
+	define("DEBUG",TRUE); // å½“å‰æ­£åœ¨è°ƒè¯•æ¨¡å¼ä¸‹
 }else{
-	define("DEBUG",FALSE); // µ±Ç°ÕýÔÚ²¿ÊðÄ£Ê½ÏÂ
+	define("DEBUG",FALSE); // å½“å‰æ­£åœ¨éƒ¨ç½²æ¨¡å¼ä¸‹
 }
 
-// Èç¹ûÊÇµ÷ÊÔÄ£Ê½£¬´ò¿ª¾¯¸æÊä³ö
+// å¦‚æžœæ˜¯è°ƒè¯•æ¨¡å¼ï¼Œæ‰“å¼€è­¦å‘Šè¾“å‡º
 if (DEBUG) {
     error_reporting(error_reporting(0) & ~E_STRICT);
 } else {
@@ -93,7 +93,7 @@ if (DEBUG) {
 }
 
 
-// ×ªÏò¿ØÖÆÆ÷£¬Ö´ÐÐÓÃ»§¼¶´úÂë
+// è½¬å‘æŽ§åˆ¶å™¨ï¼Œæ‰§è¡Œç”¨æˆ·çº§ä»£ç 
 $__controller = isset($_GET[$GLOBALS['Global']['url_controller']]) ? 
 	$_GET[$GLOBALS['Global']['url_controller']] : 
 	$GLOBALS['Global']['default_controller'];
@@ -101,13 +101,13 @@ $__action = isset($_GET[$GLOBALS['Global']['url_action']]) ?
 	$_GET[$GLOBALS['Global']['url_action']] : 
 	$GLOBALS['Global']['default_action'];
 $handle_controller = loadClass($__controller, null, $GLOBALS['Global']['controller_path'].'/'.$__controller.".php");
-// µ÷ÓÃ¿ØÖÆÆ÷³ö´í½«µ÷ÓÃÂ·ÓÉ´íÎó´¦Àíº¯Êý
+// è°ƒç”¨æŽ§åˆ¶å™¨å‡ºé”™å°†è°ƒç”¨è·¯ç”±é”™è¯¯å¤„ç†å‡½æ•°
 if(!is_object($handle_controller) || !method_exists($handle_controller, $__action)){
 	eval($GLOBALS['Global']['dispatcher_error']);
 	exit;
 }
-// ¼ÓÔØÊÓÍ¼¶ÔÏó
+// åŠ è½½è§†å›¾å¯¹è±¡
 $handle_controller->v = loadClass('View');
 
-// Ö´ÐÐÓÃ»§´úÂë
+// æ‰§è¡Œç”¨æˆ·ä»£ç 
 $handle_controller->$__action();

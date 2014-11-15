@@ -1,23 +1,23 @@
 <?php
 
 return array(
-	'mode' => 'debug', // µ÷ÊÔÄ£Ê½
+	'mode' => 'debug', // è°ƒè¯•æ¨¡å¼
 	'core_path' => FM_PATH.'/Core',
 
-	'default_controller' => 'main', // Ä¬ÈÏµÄ¿ØÖÆÆ÷Ãû³Æ
-	'default_action' => 'index',  // Ä¬ÈÏµÄ¶¯×÷Ãû³Æ
-	'url_controller' => 'c',  // ÇëÇóÊ±Ê¹ÓÃµÄ¿ØÖÆÆ÷±äÁ¿±êÊ¶
-	'url_action' => 'a',  // ÇëÇóÊ±Ê¹ÓÃµÄ¶¯×÷±äÁ¿±êÊ¶
+	'default_controller' => 'main', // é»˜è®¤çš„æŽ§åˆ¶å™¨åç§°
+	'default_action' => 'index',  // é»˜è®¤çš„åŠ¨ä½œåç§°
+	'url_controller' => 'c',  // è¯·æ±‚æ—¶ä½¿ç”¨çš„æŽ§åˆ¶å™¨å˜é‡æ ‡è¯†
+	'url_action' => 'a',  // è¯·æ±‚æ—¶ä½¿ç”¨çš„åŠ¨ä½œå˜é‡æ ‡è¯†
 
-	'controller_path' => APP_PATH.'/controller', // ÓÃ»§¿ØÖÆÆ÷³ÌÐòµÄÂ·¾¶¶¨Òå
-	'model_path' => APP_PATH.'/model', // ÓÃ»§Ä£ÐÍ³ÌÐòµÄÂ·¾¶¶¨Òå
+	'controller_path' => APP_PATH.'/controller', // ç”¨æˆ·æŽ§åˆ¶å™¨ç¨‹åºçš„è·¯å¾„å®šä¹‰
+	'model_path' => APP_PATH.'/model', // ç”¨æˆ·æ¨¡åž‹ç¨‹åºçš„è·¯å¾„å®šä¹‰
 
-	'inst_class' => array(), // ÒÑÊµÀý»¯µÄÀàÃû³Æ
-	'import_file' => array(), // ÒÑ¾­ÔØÈëµÄÎÄ¼þ
+	'inst_class' => array(), // å·²å®žä¾‹åŒ–çš„ç±»åç§°
+	'import_file' => array(), // å·²ç»è½½å…¥çš„æ–‡ä»¶
 
-	'cache' => APP_PATH.'/tmp', // spAccessÁÙÊ±ÎÄ¼þ¼ÐÄ¿Â¼
+	'cache' => APP_PATH.'/tmp', // spAccessä¸´æ—¶æ–‡ä»¶å¤¹ç›®å½•
 	
-	'db' => array(  // Êý¾Ý¿âÁ¬½ÓÅäÖÃ
+	'db' => array(  // æ•°æ®åº“è¿žæŽ¥é…ç½®
 		'driver' => 'mysql',
 		'host' => 'localhost',
 		'login' => 'root',
@@ -27,5 +27,5 @@ return array(
 	),
 	'db_driver_path' => '/Db',
 	
-	'dispatcher_error' => "die('¿ØÖÆÆ÷»ò¶¯×÷²»´æÔÚ!');" // ¶¨Òå´¦ÀíÂ·ÓÉ´íÎóµÄº¯Êý
+	'dispatcher_error' => "die('æŽ§åˆ¶å™¨æˆ–åŠ¨ä½œä¸å­˜åœ¨!');" // å®šä¹‰å¤„ç†è·¯ç”±é”™è¯¯çš„å‡½æ•°
 );

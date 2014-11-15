@@ -1,10 +1,10 @@
 <?php
 
 /**
- * dump  ¸ñÊ½»¯Êä³ö±äÁ¿³ÌĞò
+ * dump  æ ¼å¼åŒ–è¾“å‡ºå˜é‡ç¨‹åº
  * 
- * @param vars    ±äÁ¿
- * @param output    ÊÇ·ñ½«ÄÚÈİÊä³ö
+ * @param vars    å˜é‡
+ * @param output    æ˜¯å¦å°†å†…å®¹è¾“å‡º
  */
 function dump($vars, $output = TRUE)
 {
@@ -17,24 +17,24 @@ function dump($vars, $output = TRUE)
 }
 
 /**
- * Access  ¸ßËÙÊı¾İ´æÈ¡³ÌĞò  Õı³£Çé¿öÏÂÊ¹ÓÃÎÄ¼şÏµÍ³»º´æ
+ * Access  é«˜é€Ÿæ•°æ®å­˜å–ç¨‹åº  æ­£å¸¸æƒ…å†µä¸‹ä½¿ç”¨æ–‡ä»¶ç³»ç»Ÿç¼“å­˜
  * 
- * @param method    ´æÈ¡·½Ïò£¬È¡Öµ"w"Îª´æÈëÊı¾İ£¬È¡Öµ"r"¶ÁÈ¡Êı¾İ
- * @param name    ±êÊ¶Êı¾İµÄÃû³Æ
- * @param value    ´æÈëÊı¾İµÄÖµ
- * @param life_time    ±äÁ¿µÄÉú´æÊ±¼ä
+ * @param method    å­˜å–æ–¹å‘ï¼Œå–å€¼"w"ä¸ºå­˜å…¥æ•°æ®ï¼Œå–å€¼"r"è¯»å–æ•°æ®
+ * @param name    æ ‡è¯†æ•°æ®çš„åç§°
+ * @param value    å­˜å…¥æ•°æ®çš„å€¼
+ * @param life_time    å˜é‡çš„ç”Ÿå­˜æ—¶é—´
  */
 function Access($method, $name, $value = NULL, $life_time = -1)
 {
-	if('w' == $method){ // Ğ´Êı¾İ
+	if('w' == $method){ // å†™æ•°æ®
 		$file = $GLOBALS['Global']['_cache'].'/'.md5($name);
 		$life_time = ( -1 == $life_time ) ? '300000000' : $life_time;
 		$value = '<?php die();?>'.( time() + $life_time ).serialize($value);
 		return file_put_contents($file, $value);
-	}elseif('c' == $method){ // Çå³ıÊı¾İ
+	}elseif('c' == $method){ // æ¸…é™¤æ•°æ®
 		$file = $GLOBALS['Global']['_cache'].'/'.md5($name);
 		return @unlink($file);
-	}else{ // ¶ÁÊı¾İ
+	}else{ // è¯»æ•°æ®
 		$file = $GLOBALS['Global']['_cache'].'/'.md5($name);
 		if( !is_readable($file) )return FALSE;
 		$arg_data = file_get_contents($file);
@@ -47,9 +47,9 @@ function Access($method, $name, $value = NULL, $life_time = -1)
 }
 
 /**
- * GetConfig  »ñÈ¡ÏµÍ³ÅäÖÃ£¬Òà¿É×÷ÎªÓ¦ÓÃ³ÌĞò×Ô¶¨ÒåÅäÖÃµÄ´æÈ¡³ÌĞò
+ * GetConfig  è·å–ç³»ç»Ÿé…ç½®ï¼Œäº¦å¯ä½œä¸ºåº”ç”¨ç¨‹åºè‡ªå®šä¹‰é…ç½®çš„å­˜å–ç¨‹åº
  * 
- * @param vars    ÅäÖÃ±êÊ¶Ãû
+ * @param vars    é…ç½®æ ‡è¯†å
  */
 function GetConfig($vars)
 {
@@ -57,10 +57,10 @@ function GetConfig($vars)
 }
 
 /**
- * SetConfig  ÉèÖÃÏµÍ³ÅäÖÃ£¬Òà¿É×÷ÎªÓ¦ÓÃ³ÌĞò×Ô¶¨ÒåÅäÖÃµÄ´æÈ¡³ÌĞò
+ * SetConfig  è®¾ç½®ç³»ç»Ÿé…ç½®ï¼Œäº¦å¯ä½œä¸ºåº”ç”¨ç¨‹åºè‡ªå®šä¹‰é…ç½®çš„å­˜å–ç¨‹åº
  * 
- * @param vars    ÅäÖÃ±êÊ¶Ãû£¬Ò²¿ÉÒÔÊÇÅäÖÃÎÄ¼şµÄÂ·¾¶
- * @param value    Öµ
+ * @param vars    é…ç½®æ ‡è¯†åï¼Œä¹Ÿå¯ä»¥æ˜¯é…ç½®æ–‡ä»¶çš„è·¯å¾„
+ * @param value    å€¼
  */
 function SetConfig($vars, $value = "")
 {
