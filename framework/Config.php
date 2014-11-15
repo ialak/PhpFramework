@@ -6,7 +6,7 @@ return array(
 
 	'default_controller' => 'main', // 默认的控制器名称
 	'default_action' => 'index',  // 默认的动作名称
-	'url_controller' => 'm',  // 请求时使用的控制器变量标识
+	'url_controller' => 'c',  // 请求时使用的控制器变量标识
 	'url_action' => 'a',  // 请求时使用的动作变量标识
 
 	'controller_path' => APP_PATH.'/controller', // 用户控制器程序的路径定义
@@ -15,7 +15,7 @@ return array(
 	'inst_class' => array(), // 已实例化的类名称
 	'import_file' => array(), // 已经载入的文件
 
-	'sp_cache' => APP_PATH.'/tmp', // spAccess临时文件夹目录
+	'cache' => APP_PATH.'/tmp', // spAccess临时文件夹目录
 	
 	'db' => array(  // 数据库连接配置
 		'driver' => 'mysql',
